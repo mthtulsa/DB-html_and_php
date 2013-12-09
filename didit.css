@@ -1,0 +1,414 @@
+#wrapper
+{
+	width:1250px;
+	margin-left:auto;
+	margin-right:auto;
+	overflow:hidden;
+	border: 2px solid black;
+	background-color: #FFFFFF;
+	
+}
+				
+#header
+{
+	margin-top:5px;
+	margin-bottom:10px;
+	width:1243px;
+	overflow:hidden;
+	border: 3px dotted yellow;
+}
+
+#logo
+{
+	width:100px;
+	height:100px;
+	float:left;
+	/* margin-left:; */
+	/* border: 1px solid black; */
+}
+
+/*logo font */
+#logotext
+{
+	font-size:38px;
+	font-family: Tahoma, Georgia, "Times New Roman", Times, serif;
+	color:#353c47;
+	text-shadow: 0px 1px 0px #7d7c7c;
+	float: left;
+	margin-top:15px;
+}
+
+#nav {
+	margin-right:10px;
+	float:right;
+	font-size: 15px;
+	position: relative;
+	/* added the 3 below */
+	width:200px;
+	height 200px;
+	/* added */
+	border: 1px solid green;
+	font-family: Tahoma, Georgia, "Times New Roman", Times, serif;
+	
+}
+ 
+#nav ul 
+{
+	background-color: white; /*added*/
+	border: 1px solid #a9a9a9;
+	/* Rounder Corner */
+	-moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+	-khtml-border-radius: 7px;
+	/* adjust the height of the the login and create */
+	height: 45px;
+	padding: 0;
+}
+ 
+#nav ul li 
+{
+	display: inline;
+	/* changed to right */
+	float: right;
+	height: 16px;
+	margin: 9px 10px 0 10px;
+	/* took this out */
+	padding: 0px 0px;
+}
+ 
+#nav ul li a 
+{
+	color:#243953;
+	text-decoration:none;
+	outline:none;
+}
+
+#nav ul li:hover 
+{
+	background: #F90;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-khtml-border-radius: 6px;
+}
+
+/* added */
+#navbar1
+{
+	/* border: 1px solid red; */
+	font-size: 16px;
+}
+
+/* added */
+#navbar2
+{
+	border: 1px solid red;
+	font-size: 21px;
+}
+
+
+
+#content
+{
+	/* border: 2px dashed orange; */
+	width:1175px;
+	height:550px;
+	background-image:url('abqmap.png');
+	-moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+	-khtml-border-radius: 7px;
+	overflow:hidden;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:20px;
+	margin-bottom:10px;
+	border: 2px solid black;
+		
+}
+
+#firstphone
+{
+	border: 2px dashed black; 
+	width:275px;
+	height: 520px;
+	-moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+	-khtml-border-radius: 3px;
+	float: left;
+	/* margin-left:auto;
+	margin-right:auto; */
+	background-image:url("staticphone2.png");
+	position:absolute;
+	margin-left:15px;
+	margin-top:10px;
+	
+}
+
+/* the div for the form on the first phone*/
+#formPhone1
+{
+	width: 226px;
+	height: 227px;
+	margin-top: 150px;
+	margin-left: 25px;
+	border: 1px solid orange;
+	-moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	color:white;
+	text-align: center;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 20px;		
+}
+
+
+/* rounding the text fields first phone */
+#taskbox
+{
+	border-radius:20px;
+}
+
+/* submit button for the first phone */
+#submitButton
+{
+	float: right;
+	width: 100px;
+	height: 50px;
+}
+
+#secondphone
+{
+	border: 2px dashed green;
+	width:275px;
+	height: 520px;
+	-moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+	-khtml-border-radius: 3px;
+	float: left;
+	/* margin-left:auto;
+	margin-right:auto;  */
+	background-image:url("phone2apps.png");
+	position:absolute;
+	margin-left:304px;
+	margin-top:10px;
+	
+}
+	
+#secondPhoneScreen
+{
+	width: 226px;
+	height: 275px;
+	margin-top: 150px;
+	margin-left: 25px;
+	border: 1px solid red;
+	-moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	color:white;
+	
+}	
+
+
+#thirdphone
+{
+	border: 2px dashed black;
+	width:275px;
+	height: 520px;
+	-moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+	-khtml-border-radius: 3px;
+	float: left;
+	background-image:url("staticphone2.png");
+	position:absolute;
+	margin-left:593px;
+	margin-top:10px;
+}
+
+#thirdPhoneScreen
+{
+	width: 226px;
+	height: 275px;
+	margin-top: 150px;
+	margin-left: 25px;
+	border: 1px solid yellow;
+	-moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	color:white;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 20px;
+	text-align: center;
+	
+	
+}
+
+/*third phone checklist div */
+#checklist
+{
+	width: 210px;
+	height: 160px;
+	margin-top: 15px;
+	margin-left: 5px;
+	border: 1px solid orange;
+	-moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	color:white;
+	position: absolute;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 20px;
+	text-align: left;
+}
+
+/* BACK BUTTON */
+#backbutton
+{
+	width:50px;
+	height:30px;
+	margin-top: 245px;
+	float: left;
+	border: 1 px solid green;
+	
+}
+
+/* Home or Work Button */
+#homeworkbutton
+{
+	width:120px;
+	height: 29px;
+	margin-left: 5px;
+	margin-top: 220px;
+	border: 1px solid green;
+	float: left;
+	
+}
+
+#fourthphone
+{
+	border: 2px dashed red;
+	width:275px;
+	height: 520px;
+	-moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+	-khtml-border-radius: 3px;
+	float: left;
+	background-image:url("staticphone2.png");
+	position:absolute;
+	margin-left:882px;
+	margin-top:10px;
+}
+
+#fourthPhoneScreen
+{
+	width: 226px;
+	height: 275px;
+	margin-top: 150px;
+	margin-left: 25px;
+	border: 1px solid green;
+	-moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	color:white;
+}
+
+#fourthTop
+{
+	width:226px;
+	height:137px;
+	border: 1px solid yellow;
+}
+
+#fourthBottom
+{
+	width:226px;
+	height:137px;
+	border: 1px solid yellow;
+}
+
+#subcontent
+{
+	border: 2px dashed black;
+	width:1175px;
+	height:200px;
+	-moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+	-khtml-border-radius: 7px;
+	overflow:hidden;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:5px;
+	margin-bottom:10px;
+	
+}
+
+#subcontent1
+{
+	border: 2px dashed black;
+	width:365px;
+	height:160px;
+	
+	-moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+	-khtml-border-radius: 7px;
+	overflow:hidden;
+	
+	margin-top:10px;
+	margin-bottom:10px;
+	position:absolute;
+	margin-left: 15px;
+}
+
+#subcontent2
+{
+	border: 2px dashed red;
+	width:365px;
+	height:160px;
+	
+	-moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+	-khtml-border-radius: 7px;
+	overflow:hidden;
+	
+	margin-top:10px;
+	margin-bottom:10px;
+	position:absolute;
+	margin-left: 403px;
+}
+
+#subcontent3
+{
+	border: 2px dashed blue;
+	width:365px;
+	height:160px;
+	
+	-moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+	-khtml-border-radius: 7px;
+	overflow:hidden;
+	
+	margin-top:10px;
+	margin-bottom:10px;
+	position:absolute;
+	margin-left: 790px;
+}
+
+#footer 
+{
+	width:1175px;
+	height:60px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:3px;
+	margin-bottom:5px;
+	background-color: white;
+	border: 1px solid #a9a9a9;
+	-moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	overflow:hidden;
+	color: #243953;
+	padding
+}
+
+
+					
+	
