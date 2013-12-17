@@ -1,13 +1,12 @@
-<?php
-/* <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
 <head>
-	<title> Post Tasks </title>
+	<title> Create User Tasks </title>
 </head>
 <body>
-*/
 
+<?php
 
 require_once("diditLib.php");
 
@@ -16,13 +15,13 @@ $mysql = null;
 try
 {
 	$mysql = connectToMySQL();
-	postUserTask($mysql);
+	generateUserTask($mysql, 1); // the 1 is hardwired for the userId CHANGE THIS ONCE the LOGIN and SUBSYTEM IS ONLINE
 }
 
 catch(Exception $e)
 {
  	
- 	echo "Unable to Post Task" . $e->getMessage();
+ 	echo "Unable to Retrieve Task" . $e->getMessage();
 	exit;
 	
 }
@@ -34,11 +33,9 @@ if($mysql !== null)
 
 // make sure the page doesnt switch pages and say "Post Task Successfully" this post, and stays on page.
 // echo "<script> history.go(-1); </script>"
-header("Location: didit.php");
  
       
-/*
+
+?>
 </body>
 </html>
-*/
-?>

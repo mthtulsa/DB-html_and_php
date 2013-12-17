@@ -30,8 +30,8 @@
 /*logo font */
 #logotext
 {
-	font-size:38px;
-	font-family: Tahoma, Georgia, "Times New Roman", Times, serif;
+	font-size:48px;
+	font-family: Georgia, "Times New Roman", Times, serif;
 	color:#353c47;
 	text-shadow: 0px 1px 0px #7d7c7c;
 	float: left;
@@ -151,9 +151,9 @@
 	margin-top: 150px;
 	margin-left: 25px;
 	border: 1px solid orange;
-	-moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-	-khtml-border-radius: 5px;
+	-moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+	-khtml-border-radius: 3px;
 	color:white;
 	text-align: center;
 	font-family: Georgia, "Times New Roman", Times, serif;
@@ -164,7 +164,9 @@
 /* rounding the text fields first phone */
 #taskbox
 {
-	border-radius:20px;
+	-moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+	-khtml-border-radius: 5px;
 }
 
 /* submit button for the first phone */
@@ -172,7 +174,12 @@
 {
 	float: right;
 	width: 100px;
-	height: 50px;
+	height: 30px;
+	-moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	color: black;
+	font-family: Georgia, "Times New Roman", Times, serif;
 }
 
 #secondphone
@@ -191,12 +198,13 @@
 	margin-left:304px;
 	margin-top:10px;
 	
+	
 }
 	
 #secondPhoneScreen
 {
 	width: 226px;
-	height: 275px;
+	height: 225px;
 	margin-top: 150px;
 	margin-left: 25px;
 	border: 1px solid red;
@@ -207,6 +215,27 @@
 	
 }	
 
+#OKbutton
+{
+	width: 70px;
+	height: 40px;
+	border: 2px solid pink;
+	margin-left: 60px;
+	margin-top: 280px;
+	background: none;
+	
+}
+
+#cancelButton
+{
+	width: 60px;
+	height: 40px;
+	border: 2px solid green;
+	margin-left: 25px;
+	margin-top: 280px;
+	background: none;
+	
+}
 
 #thirdphone
 {
@@ -217,18 +246,19 @@
     -webkit-border-radius: 3px;
 	-khtml-border-radius: 3px;
 	float: left;
-	background-image:url("staticphone2.png");
+	background-image:url("staticphone3.png");
 	position:absolute;
 	margin-left:593px;
 	margin-top:10px;
+	
 }
 
 #thirdPhoneScreen
 {
-	width: 226px;
+	width: 236px;
 	height: 275px;
 	margin-top: 150px;
-	margin-left: 25px;
+	margin-left: 20px;
 	border: 1px solid yellow;
 	-moz-border-radius: 5px;
     -webkit-border-radius: 5px;
@@ -236,7 +266,7 @@
 	color:white;
 	font-family: Georgia, "Times New Roman", Times, serif;
 	font-size: 20px;
-	text-align: center;
+	text-align: left;
 	
 	
 }
@@ -244,7 +274,7 @@
 /*third phone checklist div */
 #checklist
 {
-	width: 210px;
+	width: 215px;
 	height: 160px;
 	margin-top: 15px;
 	margin-left: 5px;
@@ -260,25 +290,40 @@
 }
 
 /* BACK BUTTON */
-#backbutton
+#backButton
 {
-	width:50px;
-	height:30px;
-	margin-top: 245px;
+	width:60px;
+	height:28px;
+	margin-top: 225px;
 	float: left;
-	border: 1 px solid green;
+	border: 2 px solid pink;
+	background: none;
+	
 	
 }
 
-/* Home or Work Button */
+/* Home or Work Button 
 #homeworkbutton
 {
-	width:120px;
+	width:128px;
 	height: 29px;
-	margin-left: 5px;
+	margin-left: 4px;
 	margin-top: 220px;
 	border: 1px solid green;
 	float: left;
+	
+}*/
+
+/* GO BUTTON */
+#activateButton
+{
+	width:60px;
+	height:28px;
+	margin-top: 223px;
+	margin-left: 27px;
+	border: 2 px solid pink;
+	background: none;
+	
 	
 }
 
@@ -295,6 +340,7 @@
 	position:absolute;
 	margin-left:882px;
 	margin-top:10px;
+	
 }
 
 #fourthPhoneScreen
@@ -310,7 +356,7 @@
 	color:white;
 }
 
-#fourthTop
+#diditMap
 {
 	width:226px;
 	height:137px;

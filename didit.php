@@ -8,17 +8,87 @@
 		
 		<link rel="stylesheet" type="text/css" href="didit.css" />
 		
+		<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+		<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+		<script src="jquery.gomap-1.3.2.js"></script>
+		
+				<!-- defines the OKbutton_Click of the second phone to display the thridphone -->
+		<script> 
+		
+			
+			
+			function OKbutton_Onclick(){
+				$("#thirdphone").show(0);
+				
+			}
+			
+			function cancelButton_Onclick(){
+				$("#secondphone").hide(0);
+				$("#thirdphone").hide(0);
+				$("#fourthphone").hide(0);
+			}
+				
+			function backButton_onClick(){
+				$("#thirdphone").hide(0);
+				$("#fourthphone").hide(0);
+			}
+				
+			function activateButton(){
+				// setLongLat passed as a variable from the function below
+				//setLatLong(35.083615, -106.6439937);
+				setMarker(35.083615,-106.6439937,"DDC","CodeIt", false);
+				$("#fourthphone").show(0);
+			}
+			
+			function setLatLong(lat, longitude)
+			{
+				$(document).ready(function()
+				{
+					$('#diditMap').goMap(
+					{
+						latitude: lat,
+						longitude: longitude,
+						zoom: 12
+					});
+				});
+			}
+			
+			function setMarker(lat, longitude, title, markerContent, popUpState)
+			{
+					$(document).ready(function()
+					{
+						$('#diditMap').goMap(
+						{
+							markers:
+							[{
+								latitude: lat,
+								longitude: longitude,
+								title: title,
+								html :
+								{
+									content: markerContent,
+									popup: popUpState
+									
+								}
+							}],
+							zoom: 15
+						});
+					});	
+			};
+		</script>
+		
 		<title> Didit </title>
 
 </head>
 	
 		<body bgcolor="black">
+		
 			<div id="wrapper">
 				<div id="header">
 					<div id="logo"> <img src="globedirectionsorig.png" alt="Didit!" width="110" height="110"> 	
 					</div>
 			
-					<div id="logotext"> Product Name </div>
+					<div id="logotext"> Task Master </div>
 			
 					<div id="nav">
 						<ul>
@@ -51,7 +121,7 @@
 					<div id="firstphone">
 					<!-- adding form to first iPhone -->
 						<div id="formPhone1">
-							 <form method="post" action="postTask.php">
+							 <form id="firstPhoneForm" method="post" action="postTask.php"> <!-- change action="" to do nothing b/c <script> will pick it up -->
 								<table> Create DiDit! List 
 									<tr></tr>
 									<tr>
@@ -81,7 +151,7 @@
 								</table>
 				
 <!-- submit button -->							
-							 	<button type="submit" name="submit" value="insert" id="submitButton" /> SUBMIT </button>		<!-- Submit Button -->
+							 	<input type="submit" name="submit" value="insert" id="submitButton"/>		<!-- Submit Button -->
 							</form>
 						</div>	
 					</div>
@@ -89,45 +159,53 @@
 <!-- Phone Number TWO -->	
 				
 					<div id="secondphone">
-						<div id="secondPhoneScreen"><img src="alert2.png" alt="Alert"></div>
+						<button onclick="OKbutton_Onclick()" id="OKbutton"/>
+						<button onclick="cancelButton_Onclick()" id="cancelButton"/>
 					</div>
+<!-- Phone Number TWO end -->
+
+			
 					<div id="thirdphone">
 						<div id="thirdPhoneScreen">Check DiDit! Tasks
 							<div id="checklist">
-								<table>
-									<tr>
-										<td><input type="checkbox" name="BOA" class="bankOfAmerica" id="bankOfAmerica" required/></td>
-										<td><label for="iAgree"> Bank Of America </label></td>
-									</tr>
-									<tr>
-										<td><input type="checkbox" name="FedEx" class="FedEx" id="FedEx" required/></td>
-										<td><label for="iAgree"> FedEx </label></td>
-									</tr>
-									<tr>
-										<td><input type="checkbox" name="RedBox" class="RedBox" id="RedBox" required/></td>
-										<td><label for="iAgree"> RedBox </label></td>
-									</tr>
-									<tr>
-										<td><input type="checkbox" name="PostOffice" class="PostOffice" id="PostOffice" required/></td>
-										<td><label for="iAgree"> Post Office </label></td>
-									</tr>
-									<tr>
-										<td><input type="checkbox" name="GroceryStore" class="GroceryStore" id="GroceryStore" required/></td>
-										<td><label for="iAgree"> Grocery Store </label></td>
-									</tr>
-								</table>
+								<?php 
+									require_once("diditLib.php");
+
+									$mysql = null;
+
+									try
+									{
+										$mysql = connectToMySQL();
+										generateUserTask($mysql, 1); // the 1 is hardwired for the userId CHANGE THIS ONCE the LOGIN and SUBSYTEM IS ONLINE
+									}
+
+									catch(Exception $e)
+									{
+	
+										echo "Unable to Retrieve Task" . $e->getMessage();
+										exit;
+	
+									}
+
+									if($mysql !== null)
+									{
+										$mysql->close();
+									}						
+								?>
 							</div>
-							<!-- BACK BUTTON -->
-							<div id="backbutton"><img src="backbutton.png" alt="Go Back?"></div>
-							<div id="homeworkbutton"><img src="hworkbutton.png"	alt="Endpoint"></div>
+<!-- BACK BUTTON & GO BUTTON -->
+							<button onclick="backButton_onClick()" id="backButton"/>
+							<button onclick="activateButton()" id="activateButton"/>
 						</div>
 					</div>
+<!-- FOURTH PHONE BEGIN-->					
 					<div id="fourthphone">
 						<div id="fourthPhoneScreen">
-							<div id="fourthTop"><img src="topmap.png"	alt="Map"></div>
+							<div id="diditMap"></div>
 							<div id="fourthBottom"><img src="bottomdistances.png"	alt="Map"></div>
 						</div>
 					</div>
+<!-- FOURTH PHONE END -->					
 				</div>
 				
 				<div id="subcontent">
@@ -154,9 +232,34 @@
 					</div>
 				</div>
 			
-				</body>
+				<div id="footer"> FOOTER THIS!</div>
+				
+				<!-- Setting the form info for the 1st and 2nd phone also hiding the phones when the page loads-->
+				<script>
+					
+					// hides the phones when the page loads
+					$("#secondphone").hide(0);
+					$("#thirdphone").hide(0);
+					$("#fourthphone").hide(0);
+					
+					// this is just setting it up until it is called
+					// in-line function after the submit all has to be within the () closing after brackets
+					$("#firstPhoneForm").submit(function(event)
+					{
+						//cancels the form submission until we execute sending it to with PHP
+						//event.preventDefault();
+						
+						// on submit button, from previous phone will display the second phone
+						$('#secondphone').show(0);
+					}); 
+					
+					
+					
+				</script>
+			
+				
+			</body>
 		
-				<div id="footer"> FOOTER THIS!
-				</div>
-			</div>
+				
+			
 </html>	
