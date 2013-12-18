@@ -13,8 +13,7 @@
 		<script src="jquery.gomap-1.3.2.js"></script>
 		
 				<!-- defines the OKbutton_Click of the second phone to display the thridphone -->
-		<script> 
-		
+		<script>
 			
 			
 			function OKbutton_Onclick(){
@@ -232,7 +231,9 @@
 					</div>
 				</div>
 			
-				<div id="footer"> FOOTER THIS!</div>
+				<div id="footer"><strong>Status: </strong><span id="statusBar">DidIt Loaded OK</span><br />
+					FOOTER THIS!
+				</div>
 				
 				<!-- Setting the form info for the 1st and 2nd phone also hiding the phones when the page loads-->
 				<script>
@@ -246,15 +247,20 @@
 					// in-line function after the submit all has to be within the () closing after brackets
 					$("#firstPhoneForm").submit(function(event)
 					{
-						//cancels the form submission until we execute sending it to with PHP
-						//event.preventDefault();
-						
 						// on submit button, from previous phone will display the second phone
 						$('#secondphone').show(0);
-					}); 
-					
-					
-					
+
+						$.ajax({
+							type: "POST",
+							url: "postTask.php",
+							data: $("#firstPhoneForm").serialize(), // serializes the form's elements.
+							success: function(data)
+							{
+								$('#statusBar').html = data; // show response from the php script.
+							}
+						});
+						return false; // avoid to execute the actual submit of the form.
+					});
 				</script>
 			
 				
