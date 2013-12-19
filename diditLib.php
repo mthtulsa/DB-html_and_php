@@ -96,12 +96,11 @@ function generateUserTask($mysql, $userId)
 	
 	/* use the results to build the table data */
 	$statement->bind_result($id,$description, $locationId, $latitude, $longitude);
-// ARRAY MATT CREATED
 	$locationsArray = array($id, $locationId, $latitude, $longitude);  //creating an array for location information from select statement
 	while($statement->fetch())
 	{
 		$table .= "<tr><td><input type=\"checkbox\" />$description  </td></tr>"; // the backslashes \\ are the "escapes" before the ""'s for putting a special character in strings
-		
+		$locationsArray [$id] = array($locationId, $latitude, $longitude);
 	}
 	
 	/* build the table footer & return the table */
