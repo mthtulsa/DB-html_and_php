@@ -72,7 +72,7 @@ function postUserTask($mysql)
 
 function generateUserTask($mysql, $userId)
 {
-	$query = "SELECT id, description FROM tasks WHERE userId = ?";    //no comma necessary after fields  
+	$query = "SELECT tasks.id, description, locationId, latitude, longitude FROM tasks INNER JOIN locations ON tasks.locationId = locations.id WHERE userId = ? AND locationId IS NOT NULL ";    //no comma necessary after fields  
 	
 	/* prepare query */
 	$statement = $mysql->prepare($query);
@@ -95,10 +95,12 @@ function generateUserTask($mysql, $userId)
 	$table .= "<tr><th>Task #</th></tr>";
 	
 	/* use the results to build the table data */
-	$statement->bind_result($id,$description);
+	$statement->bind_result($id,$description, $locationId, $latitude, $longitude);
+// ARRAY MATT CREATED
+	$locationsArray = array($id, $locationId, $latitude, $longitude);  //creating an array for location information from select statement
 	while($statement->fetch())
 	{
-		$table .= "<tr><td><input type=\"checkbox\" />$description  </td></tr>"; // the backslashes are the "escapes" before the ""'s for putting a special character in strings
+		$table .= "<tr><td><input type=\"checkbox\" />$description  </td></tr>"; // the backslashes \\ are the "escapes" before the ""'s for putting a special character in strings
 		
 	}
 	

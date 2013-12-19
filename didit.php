@@ -16,10 +16,20 @@
 		<script> 
 		
 			
-			
 			function OKbutton_Onclick(){
 				$("#thirdphone").show(0);
-				
+					
+					// pulls  data from the DB and creates checkbox list from PHP function createUserTask
+				  $.ajax({
+					  url:'createUserTask.php',
+					  complete: function (response) {
+						  $('#checklist').html(response.responseText);
+					  },
+					  error: function () {
+						  $('#checklist').html('Unable to retrieve Task List');
+					  },
+				  });
+  				  return false;		
 			}
 			
 			function cancelButton_Onclick(){
@@ -168,30 +178,6 @@
 					<div id="thirdphone">
 						<div id="thirdPhoneScreen">Check DiDit! Tasks
 							<div id="checklist">
-								<?php 
-									require_once("diditLib.php");
-
-									$mysql = null;
-
-									try
-									{
-										$mysql = connectToMySQL();
-										generateUserTask($mysql, 1); // the 1 is hardwired for the userId CHANGE THIS ONCE the LOGIN and SUBSYTEM IS ONLINE
-									}
-
-									catch(Exception $e)
-									{
-	
-										echo "Unable to Retrieve Task" . $e->getMessage();
-										exit;
-	
-									}
-
-									if($mysql !== null)
-									{
-										$mysql->close();
-									}						
-								?>
 							</div>
 <!-- BACK BUTTON & GO BUTTON -->
 							<button onclick="backButton_onClick()" id="backButton"/>
@@ -202,7 +188,7 @@
 					<div id="fourthphone">
 						<div id="fourthPhoneScreen">
 							<div id="diditMap"></div>
-							<div id="fourthBottom"><img src="bottomdistances.png"	alt="Map"></div>
+<!-- Commented out the Bottom DIV	<div id="fourthBottom"><img src="bottomdistances.png"	alt="Map"></div> -->
 						</div>
 					</div>
 <!-- FOURTH PHONE END -->					
@@ -251,6 +237,19 @@
 						
 						// on submit button, from previous phone will display the second phone
 						$('#secondphone').show(0);
+						
+						 $.ajax({
+								type: "POST",
+								url: "postTask.php",
+								data: $("#firstPhoneForm").serialize(), // serializes the form's elements.
+								success: function(data)
+								{
+										$('#statusBar').html = data; // show response from the php script.
+								}
+						});
+						return false; // avoid to execute the actual submit of the form.
+						
+						
 					}); 
 					
 					
