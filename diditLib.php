@@ -72,7 +72,7 @@ function postUserTask($mysql)
 
 function generateUserTask($mysql, $userId)
 {
-	$query = "SELECT tasks.id, description, locationId, latitude, longitude FROM tasks INNER JOIN locations ON tasks.locationId = locations.id WHERE userId = ? AND locationId IS NOT NULL ";    //no comma necessary after fields  
+	$query = "SELECT tasks.id, description, locationId, latitude, longitude, name FROM tasks INNER JOIN locations ON tasks.locationId = locations.id WHERE userId = ? AND locationId IS NOT NULL ";    //no comma necessary after fields  
 	
 	/* prepare query */
 	$statement = $mysql->prepare($query);
@@ -95,16 +95,19 @@ function generateUserTask($mysql, $userId)
 	$table .= "<tr><th>Task #</th></tr>";
 	
 	/* use the results to build the table data */
-	$statement->bind_result($id,$description, $locationId, $latitude, $longitude);
-	$locationsArray = array($id, $locationId, $latitude, $longitude);  //creating an array for location information from select statement
+	$statement->bind_result($id,$description, $locationId, $latitude, $longitude, $name);
+	$locationsArray = array();  //creating an array for location information from select statement
 	while($statement->fetch())
 	{
 		$table .= "<tr><td><input type=\"checkbox\" />$description  </td></tr>"; // the backslashes \\ are the "escapes" before the ""'s for putting a special character in strings
-		$locationsArray [$id] = array($locationId, $latitude, $longitude);
+		$locationsArray [$id] = array($locationId, $latitude, $longitude, $name, $description);
 	}
 	
 	/* build the table footer & return the table */
 	$table .= "</table>";
+	
+	/* put some extra JSON data for later use */
+	$table .= "<script> var locationsJSON = " . json_encode($locationsArray) . ";</script>";
 	
 	return($table);
 }
