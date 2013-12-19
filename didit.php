@@ -46,6 +46,11 @@
 				// setLongLat passed as a variable from the function below
 				//setLatLong(35.083615, -106.6439937);
 				setMarker(35.083615,-106.6439937,"DDC","CodeIt", false);
+				$.each(locationsJSON, function(key, value)
+				{
+					console.log("Plotting " + value[1] + ", " + value[2]);
+					setMarker(value[1], value[2], value[3], value[4], false);
+				});
 				$("#fourthphone").show(0);
 			}
 			
